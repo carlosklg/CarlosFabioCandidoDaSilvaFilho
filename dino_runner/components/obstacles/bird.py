@@ -8,7 +8,7 @@ class Bird(Obstacle):
       self.rect.y = 250
       self.step_index = 0
 
-def draw(self, screen):
+   def draw(self, screen):
       screen.blit(self.image[self.step_index // 5], self.rect)
       self.step_index += 1
 
