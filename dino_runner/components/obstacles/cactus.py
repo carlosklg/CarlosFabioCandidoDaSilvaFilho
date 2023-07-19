@@ -1,16 +1,19 @@
-import random 
+import random
 
+from dino_runner.utils.constants import LARGE_CACTUS, SMALL_CACTUS
 from dino_runner.components.obstacles.obstacles import Obstacle
-from dino_runner.utils.constants import SMALL_CACTUS
+
+CACTUS = [
+    (LARGE_CACTUS, 300),
+    (SMALL_CACTUS, 325),
+]
+
 
 class Cactus(Obstacle):
-    def __init__(self, image):
+    def __init__(self):
+        image, cactus_pos = CACTUS[random.randint(0, 1)]
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
-        self.diference_between_cactus = (
-            SMALL_CACTUS[0].get_height() - image[0].get_height()
-        )
-        if SMALL_CACTUS[0].get_height() == image[0].get_height():
-             self.rect.y = 325 + self.diference_between_cactus
-        else:
-            self.rect.y = 300
+        self.rect.y = cactus_pos
+
+            
